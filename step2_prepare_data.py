@@ -47,7 +47,7 @@ def get_fold_indices(labels):
 	return fold_idx
 
 def load_data():
-	with open('./ldw_data/LDW_abide_data.pkl', 'rb') as f:
+	with open('./data/ldw_data/LDW_abide_data.pkl', 'rb') as f:
 		f = dill.load(f)
 	data = f['node_feat']
 	adj = f['adj_mat']
@@ -125,7 +125,7 @@ def convert2graphs(Corr, Adj, SeqLen, Label):
 SEED = 42
 np.random.seed(SEED)
 
-saveTo = './folds_data/'  
+saveTo = './data/folds_data/'  
 os.makedirs(saveTo, exist_ok=True)
 
 print('Loading data')
@@ -168,3 +168,4 @@ for i in range(1,6):
 		# with shelve.open(saveTo+'graphs_outer'+str(i)+'_inner'+str(j)+'.db') as db:
 		# 	db['db'] = graphs
 		# 	db.close()
+

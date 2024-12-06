@@ -37,7 +37,7 @@ def check_path(path):
 	return os.path.exists(path)
 
 def load_data(outer_loop, inner_loop):
-	saveTo = './folds_data/' 
+	saveTo = './data/folds_data/' 
 	with open(saveTo+'graphs_outer'+str(outer_loop)+'_inner'+str(inner_loop)+'.pkl', 'rb') as f:
 		f = torch.load(f)
 		train_graphs = f['train_graphs']

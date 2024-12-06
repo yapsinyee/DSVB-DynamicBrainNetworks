@@ -83,7 +83,7 @@ earlyStopPatience=500, earlyStop=True)
 
 
 # %% Check the training process
-savePATH = "saved_models/VGRNN_softmax_adv_fold11"
+savePATH = "saved_models/VGRNN_softmax_adv_fold12"
 
 loadPATH = savePATH
 checkpoint = torch.load(savePATH)
@@ -124,6 +124,7 @@ savePATHS = []; test_ACC = []; test_PRED = []; test_SENS = []; test_F1 = []; tes
 z_Samples = []; zh_Samples = []; Readouts = []; Targets = []; testIdx = []
 
 savePATHS.append(r"saved_models/VGRNN_softmax_adv_fold11")
+savePATHS.append(r"saved_models/VGRNN_softmax_adv_fold12")
 
 for savePATH in savePATHS:
 
@@ -198,8 +199,8 @@ print(f"AUC: {np.mean(test_AUC):.4f}, Std: {np.std(test_AUC):.4f}")
 print("===================================")
 
 
-#%% Extract the embeddings
-saveTo = './samples_data/'  
+#%% Extract the embeddings for one outer loop
+saveTo = './outputs/samples_data/'  
 os.makedirs(saveTo, exist_ok=True)
 
 samples = {}
@@ -218,10 +219,9 @@ with open(saveTo+'samples_outer'+str(outer_loop)+'.pkl', 'wb') as f:
 	torch.save(samples, f)
 	f.close()
 
-
 #%% Plot tSNE
 plt.style.use('default')
-plt.style.use('seaborn-darkgrid')
+plt.style.use('Solarize_Light2')
 init = 'default'
 tsne = TSNE(n_components=2)
 
@@ -270,9 +270,12 @@ ax.get_yaxis().set_visible(False)
 # ax.get_xaxis().set_visible(False)
 # ax.get_yaxis().set_visible(False)
 
-saveTo = './saved_figures/'  
+saveTo = './outputs/saved_figures/'  
 os.makedirs(saveTo, exist_ok=True)
+title = "tSNE_z"
 # plt.title(title)
 # plt.legend(['HC train','ASD train','HC test','ASD test'], loc='best', ncol=1, columnspacing=0.3, handletextpad=0.3, borderpad=0.2, fontsize=20)
 plt.savefig(saveTo+title+'_Z'+'_'+init+'.jpg', dpi=400, bbox_inches='tight', pad_inches=0)
 plt.show()
+
+# %%

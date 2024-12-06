@@ -1,4 +1,4 @@
-# Deep Spatiotemporal Variational Bayes (DSVB) for Dynamic Brain Networks
+# Deep Spatiotemporal Variational Bayes (DSVB) for Dynamic Graph Representation Learning of Brain Networks
 
 Pytorch implementation of the IJCAI 2024 paper [A Deep Probabilistic Spatiotemporal Framework for Dynamic Graph
 Representation Learning with Application to Brain Disorder Identification](https://www.ijcai.org/proceedings/2024/0592).
